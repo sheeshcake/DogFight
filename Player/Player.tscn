@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Player/Player.gd" type="Script" id=1]
+[ext_resource path="res://Font/Xerox Sans Serif Wide Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Player/Assets/Fly (1).png" type="Texture" id=3]
+[ext_resource path="res://Player/Assets/Fly (2).png" type="Texture" id=4]
+[ext_resource path="res://Player/Assets/Shoot (1).png" type="Texture" id=5]
+[ext_resource path="res://Player/Assets/Shoot (2).png" type="Texture" id=6]
+[ext_resource path="res://Player/Assets/Shoot (3).png" type="Texture" id=7]
+[ext_resource path="res://Player/Assets/Shoot (4).png" type="Texture" id=8]
+[ext_resource path="res://Player/Assets/Shoot (5).png" type="Texture" id=9]
+[ext_resource path="res://Player/Assets/Dead (1).png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.8509, 6.4311 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "shooting",
+"speed": 60.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Target" type="Position2D" parent="."]
+position = Vector2( 120.949, 62.9184 )
+
+[node name="NickName" type="Label" parent="."]
+margin_left = -16.0
+margin_top = -21.0
+margin_right = 16.0
+margin_bottom = -13.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = -238.31
+margin_top = -234.377
+margin_right = -121.31
+margin_bottom = -217.377
+value = 100.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = -314.98
+margin_top = -235.619
+margin_right = -252.98
+margin_bottom = -218.619
+custom_fonts/font = SubResource( 3 )
+text = "Health"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+
+[node name="Label2" type="Label" parent="."]
+margin_left = -255.452
+margin_top = -44.6196
+margin_right = 258.548
+margin_bottom = 36.3804
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Animation" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 1.52588e-005 )
+frames = SubResource( 5 )
+animation = "dead"
+playing = true
+[connection signal="draw" from="." to="." method="_on_Player_draw"]

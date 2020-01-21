@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Menu/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://Font/Xerox Sans Serif Wide Bold.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 2 )
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="JoinLobby" type="Button" parent="."]
+margin_left = 750.0
+margin_top = 220.0
+margin_right = 1000.0
+margin_bottom = 297.0
+rect_pivot_offset = Vector2( 57, 26 )
+custom_fonts/font = SubResource( 1 )
+text = "Join Lobby"
+
+[node name="HostLobby" type="Button" parent="."]
+margin_left = 290.0
+margin_top = 220.0
+margin_right = 540.0
+margin_bottom = 297.0
+rect_pivot_offset = Vector2( 57, 26 )
+custom_fonts/font = SubResource( 1 )
+text = "Host Lobby"
+
+[node name="Start" type="Button" parent="."]
+margin_left = 540.0
+margin_top = 470.0
+margin_right = 790.0
+margin_bottom = 547.0
+rect_pivot_offset = Vector2( -99.022, -55.637 )
+custom_fonts/font = SubResource( 1 )
+disabled = true
+text = "Start"
+
+[node name="Ready" type="Button" parent="."]
+margin_left = 540.0
+margin_top = 470.0
+margin_right = 790.0
+margin_bottom = 547.0
+rect_pivot_offset = Vector2( -99.022, -55.637 )
+custom_fonts/font = SubResource( 1 )
+disabled = true
+text = "Ready"
+
+[node name="NickName" type="LineEdit" parent="."]
+margin_left = 262.0
+margin_top = 100.0
+margin_right = 559.0
+margin_bottom = 149.0
+
+[node name="IpAddress" type="LineEdit" parent="."]
+margin_left = 840.0
+margin_top = 100.0
+margin_right = 1136.0
+margin_bottom = 147.0
+
+[node name="Label" type="Label" parent="."]
+margin_left = 80.0
+margin_top = 100.0
+margin_right = 262.0
+margin_bottom = 149.0
+custom_fonts/font = SubResource( 2 )
+text = "Nickname:"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 640.0
+margin_top = 100.0
+margin_right = 840.0
+margin_bottom = 147.0
+custom_fonts/font = SubResource( 2 )
+text = "IP Address:"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 219.0
+margin_top = 240.0
+margin_right = 419.0
+margin_bottom = 278.0
+custom_fonts/font = SubResource( 2 )
+align = 1
+valign = 1
+autowrap = true
+[connection signal="pressed" from="JoinLobby" to="." method="_on_JoinLobby_pressed"]
+[connection signal="pressed" from="HostLobby" to="." method="_on_HostLobby_pressed"]
+[connection signal="pressed" from="Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Ready" to="." method="_on_Ready_pressed"]
